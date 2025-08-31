@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIATECH Hero Video Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Courier New', monospace;
+        }
+        canvas {
+            border: 1px solid #333;
+            background: #0a0a0a;
+        }
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <p>Presiona 'R' para grabar</p>
+        <p>Presiona 'S' para detener</p>
+        <p>Presiona 'D' para descargar</p>
+    </div>
+    <canvas id="heroCanvas" width="1920" height="1080"></canvas>
+
+    <script>
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Configuración
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        // Código de ejemplo
+        const codeLines = [
+            'const biatech = {',
+            '  name: "BIATECH",',
+            '  services: [',
+            '    "Desarrollo de Software",',
+            '    "Análisis de Datos",',
+            '    "Consultoría Tecnológica",',
+            '    "Pruebas de Carga",',
+            '    "SEO y Optimización"',
+            '  ],',
+            '  technologies: [',
+            '    "React", "Node.js", "Python",',
+            '    "TypeScript", "AWS", "Docker"',
+            '  ],',
+            '  mission: "Transformar ideas en realidad digital"',
+            '};',
+            '',
+            '// Iniciando desarrollo...',
+            'async function startProject() {',
+            '  const analysis = await analyzeRequirements();',
+            '  const design = createDesign(analysis);',
+            '  const development = buildSolution(design);',
+            '  const testing = performQA(development);',
+            '  return deploySolution(testing);',
+            '}',
+            '',
+            '// Resultado: Éxito garantizado',
+            'const result = await startProject();',
+            'console.log("✅ Proyecto completado");'
+        ];
+        
+        let currentLine = 0;
+        let currentChar = 0;
+        let typingSpeed = 50;
+        let lineHeight = 30;
+        let startY = 100;
+        
+        // Colores
+        const colors = {
+            keyword: '#3B82F6',    // Azul para palabras clave
+            string: '#10B981',     // Verde para strings
+            comment: '#6B7280',    // Gris para comentarios
+            default: '#F8FAFC',    // Blanco para texto normal
+            background: '#0F172A'  // Fondo oscuro
+        };
+        
+        // Palabras clave para resaltar
+        const keywords = ['const', 'let', 'var', 'function', 'async', 'await', 'return', 'if', 'else', 'for', 'while', 'class', 'import', 'export'];
+        const strings = /"[^"]*"/g;
+        const comments = /\/\/.*$/g;
+        
+        function drawBackground() {
+            // Fondo con gradiente
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, '#0F172A');
+            gradient.addColorStop(1, '#1E293B');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+            
+            // Puntos de conexión
+            ctx.fillStyle = '#3B82F6';
+            ctx.globalAlpha = 0.3;
+            for (let i = 0; i < 20; i++) {
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        }
+        
+        function highlightSyntax(text, x, y) {
+            let currentX = x;
+            const words = text.split(' ');
+            
+            words.forEach((word, index) => {
+                let color = colors.default;
+                
+                // Detectar palabras clave
+                if (keywords.includes(word)) {
+                    color = colors.keyword;
+                }
+                
+                // Detectar strings
+                if (word.match(strings)) {
+                    color = colors.string;
+                }
+                
+                // Detectar comentarios
+                if (word.startsWith('//')) {
+                    color = colors.comment;
+                }
+                
+                ctx.fillStyle = color;
+                ctx.fillText(word, currentX, y);
+                currentX += ctx.measureText(word + ' ').width;
+            });
+        }
+        
+        function animate() {
+            drawBackground();
+            
+            // Dibujar líneas ya completadas
+            for (let i = 0; i < currentLine; i++) {
+                const y = startY + (i * lineHeight);
+                highlightSyntax(codeLines[i], 100, y);
+            }
+            
+            // Dibujar línea actual
+            if (currentLine < codeLines.length) {
+                const y = startY + (currentLine * lineHeight);
+                const currentText = codeLines[currentLine].substring(0, currentChar);
+                highlightSyntax(currentText, 100, y);
+                
+                // Cursor parpadeante
+                if (currentChar < codeLines[currentLine].length) {
+                    const cursorX = 100 + ctx.measureText(currentText).width;
+                    ctx.fillStyle = '#3B82F6';
+                    ctx.fillRect(cursorX, y - 20, 2, 20);
+                }
+            }
+            
+            // Avanzar animación
+            if (currentLine < codeLines.length) {
+                if (currentChar < codeLines[currentLine].length) {
+                    currentChar++;
+                } else {
+                    currentLine++;
+                    currentChar = 0;
+                }
+            } else {
+                // Reiniciar cuando termine
+                setTimeout(() => {
+                    currentLine = 0;
+                    currentChar = 0;
+                }, 2000);
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Iniciar animación
+        animate();
+        
+        // Controles de teclado
+        document.addEventListener('keydown', (e) => {
+            switch(e.key.toLowerCase()) {
+                case 'r':
+                    console.log('Grabando...');
+                    break;
+                case 's':
+                    console.log('Detenido');
+                    break;
+                case 'd':
+                    const link = document.createElement('a');
+                    link.download = 'biatech-hero.mp4';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fondo principal -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Patrón de fondo tecnológico -->
+  <g opacity="0.1">
+    <!-- Líneas de código -->
+    <rect x="50" y="50" width="200" height="2" rx="1" fill="#3B82F6"/>
+    <rect x="50" y="60" width="150" height="2" rx="1" fill="#64748B"/>
+    <rect x="50" y="70" width="180" height="2" rx="1" fill="#3B82F6"/>
+    <rect x="50" y="80" width="120" height="2" rx="1" fill="#64748B"/>
+    
+    <rect x="950" y="500" width="180" height="2" rx="1" fill="#3B82F6"/>
+    <rect x="950" y="510" width="150" height="2" rx="1" fill="#64748B"/>
+    <rect x="950" y="520" width="200" height="2" rx="1" fill="#3B82F6"/>
+    <rect x="950" y="530" width="160" height="2" rx="1" fill="#64748B"/>
+    
+    <!-- Puntos de conexión -->
+    <circle cx="100" cy="150" r="3" fill="#3B82F6"/>
+    <circle cx="1100" cy="480" r="3" fill="#3B82F6"/>
+    <circle cx="100" cy="480" r="3" fill="#3B82F6"/>
+    <circle cx="1100" cy="150" r="3" fill="#3B82F6"/>
+    
+    <!-- Líneas de conexión -->
+    <line x1="100" y1="150" x2="1100" y2="480" stroke="#3B82F6" stroke-width="1"/>
+    <line x1="100" y1="480" x2="1100" y2="150" stroke="#3B82F6" stroke-width="1"/>
+  </g>
+  
+  <!-- Logo BIATECH -->
+  <g transform="translate(100, 200)">
+    <!-- Círculo de fondo del logo -->
+    <circle cx="80" cy="80" r="60" fill="url(#textGradient)" filter="url(#glow)"/>
+    
+    <!-- Terminal/Consola -->
+    <rect x="40" y="40" width="80" height="60" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+    
+    <!-- Barra de título -->
+    <rect x="40" y="40" width="80" height="16" rx="8" fill="#64748B"/>
+    <circle cx="52" cy="48" r="3" fill="#EF4444"/>
+    <circle cx="60" cy="48" r="3" fill="#F59E0B"/>
+    <circle cx="68" cy="48" r="3" fill="#10B981"/>
+    
+    <!-- Líneas de código -->
+    <rect x="48" y="62" width="25" height="2" rx="1" fill="#3B82F6"/>
+    <rect x="48" y="68" width="35" height="2" rx="1" fill="#64748B"/>
+    <rect x="48" y="74" width="30" height="2" rx="1" fill="#3B82F6"/>
+    <rect x="48" y="80" width="40" height="2" rx="1" fill="#64748B"/>
+  </g>
+  
+  <!-- Texto principal -->
+  <text x="200" y="250" font-family="Inter, system-ui, sans-serif" font-size="48" font-weight="700" fill="white">
+    BIATECH
+  </text>
+  
+  <!-- Subtítulo -->
+  <text x="200" y="300" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="400" fill="#CBD5E1">
+    Desarrollo de Software a Medida
+  </text>
+  
+  <!-- Descripción -->
+  <text x="200" y="340" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="400" fill="#94A3B8">
+    Transformamos ideas innovadoras en soluciones tecnológicas
+  </text>
+  
+  <!-- Elementos decorativos -->
+  <g opacity="0.6">
+    <!-- Iconos de servicios -->
+    <g transform="translate(800, 200)">
+      <!-- Desarrollo -->
+      <circle cx="30" cy="30" r="25" fill="#3B82F6" opacity="0.2"/>
+      <text x="30" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#3B82F6">⚡</text>
+    </g>
+    
+    <g transform="translate(850, 200)">
+      <!-- SEO -->
+      <circle cx="30" cy="30" r="25" fill="#10B981" opacity="0.2"/>
+      <text x="30" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#10B981">📊</text>
+    </g>
+    
+    <g transform="translate(900, 200)">
+      <!-- Testing -->
+      <circle cx="30" cy="30" r="25" fill="#F59E0B" opacity="0.2"/>
+      <text x="30" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#F59E0B">🔍</text>
+    </g>
+    
+    <g transform="translate(950, 200)">
+      <!-- Seguridad -->
+      <circle cx="30" cy="30" r="25" fill="#EF4444" opacity="0.2"/>
+      <text x="30" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#EF4444">🛡️</text>
+    </g>
+  </g>
+  
+  <!-- CTA -->
+  <rect x="200" y="400" width="200" height="50" rx="25" fill="url(#textGradient)"/>
+  <text x="300" y="430" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="white">
+    Consulta Gratuita
+  </text>
+  
+  <!-- URL -->
+  <text x="200" y="520" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="400" fill="#64748B">
+    www.biatech.cl
+  </text>
+  
+  <!-- Elementos flotantes -->
+  <g opacity="0.3">
+    <circle cx="1000" cy="100" r="2" fill="#3B82F6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1050" cy="120" r="2" fill="#10B981">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1100" cy="80" r="2" fill="#F59E0B">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
